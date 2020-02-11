@@ -38,8 +38,40 @@ export class Tamagotchi {
       this.busy = true;
       setTimeout(() => {
         this.busy = false;
-      }, 1000*2)
+      }, 1000 * 4)
+    }
+  }
+
+  bedTime() {
+    if (this.busy === false && this.alive === true) {
+      this.sleep = 100;
+      this.busy = true;
+      setTimeout(() => {
+        this.busy = false;
+      }, 1000 * 4);
+    }
+  }
+
+  play() {
+    if (this.busy === false && this.alive === true) {
+      this.happiness = 100;
+      this.busy = true;
+      setTimeout(() => {
+        this.busy = false;
+      }, 1000 * 4);
     }
   }
   
+  checkAlive() {
+    setInterval(() => {
+      if (this.sleep === 0 && this.happiness === 0 && this.foodLevel === 0) {
+        this.alive = false;
+      } else {
+        this.alive = true; 
+      }
+    }, 500);
+  }
+
+ 
+
 }

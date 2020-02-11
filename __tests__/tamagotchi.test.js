@@ -39,6 +39,37 @@ describe('Tamagotchi', () => {
     tamagotchi.feed();
     expect(tamagotchi.foodLevel).toBe(100);
   });
+  test('timer should stay busy for 4 seconds after feeding', () => {
+    tamagotchi.feed();
+    expect(tamagotchi.busy).toBe(true)
+    jest.advanceTimersByTime(1000 *4 + 1);
+    expect(tamagotchi.busy).toBe(false)
+  });
+  test('should refill sleep level', () => {
+    tamagotchi.getTired();
+    jest.advanceTimersByTime(1000 + 1);
+    tamagotchi.bedTime();
+    expect(tamagotchi.sleep).toBe(100);
+  });
+  test('timer should stay busy for 4 seconds after sleeping', () => {
+    tamagotchi.bedTime();
+    expect(tamagotchi.busy).toBe(true);
+    jest.advanceTimersByTime(1000 *4 +1);
+    expect(tamagotchi.busy).toBe(false);
+  });
+  test('should refill happiness level', () => {
+    tamagotchi.getSad();
+    jest.advanceTimersByTime(1000 + 1);
+    tamagotchi.play();
+    expect(tamagotchi.happiness).toBe(100);
+  });
+  test('timer should stay busy for 4 seconds after playing', () => {
+    tamagotchi.play();
+    expect(tamagotchi.busy).toBe(true);
+    jest.advanceTimersByTime(1000 * 4 +1);
+    expect(tamagotchi.busy).toBe(false);
+  });
+  
 
 
 
