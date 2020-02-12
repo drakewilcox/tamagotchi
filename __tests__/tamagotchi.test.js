@@ -69,7 +69,15 @@ describe('Tamagotchi', () => {
     jest.advanceTimersByTime(1000 * 4 +1);
     expect(tamagotchi.busy).toBe(false);
   });
-  
+  test ('should kill tomagotchi when status is less than 0', () => {
+    tamagotchi.getHungry();
+    tamagotchi.getSad();
+    tamagotchi.getTired();
+    jest.advanceTimersByTime(1000 * 10 +1);
+    tamagotchi.checkAlive();
+    jest.advanceTimersByTime(500 + 1);
+    expect(tamagotchi.alive).toBe(false);
+  })
 
 
 
